@@ -1,4 +1,5 @@
-﻿import { redirect } from "next/navigation";
+﻿import Image from "next/image";
+import { redirect } from "next/navigation";
 
 import { LoginForm } from "@/components/auth/login-form";
 import { getSession } from "@/lib/auth/session";
@@ -29,8 +30,24 @@ export default async function LoginPage() {
         <section className="page-hero p-8 sm:p-10 lg:p-12">
           <div className="relative flex h-full flex-col justify-between gap-10">
             <div className="space-y-6">
-              <div className="inline-flex items-center rounded-full border border-brand/20 bg-brand/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-brand">
-                Laila Prototype
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="official-coso-logo official-coso-logo-login">
+                  <Image
+                    src="/brand/coso-logo-official-tight.png"
+                    alt="Logo officiel COSO"
+                    width={84}
+                    height={84}
+                    priority
+                  />
+                </div>
+                <div>
+                  <div className="inline-flex items-center rounded-full border border-brand/20 bg-brand/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-brand">
+                    Laila Prototype
+                  </div>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
+                    COSO Risk-Control Workspace
+                  </p>
+                </div>
               </div>
               <div className="space-y-4">
                 <p className="max-w-3xl font-heading text-4xl font-semibold leading-tight tracking-[-0.05em] text-foreground sm:text-5xl lg:text-6xl">
@@ -156,4 +173,5 @@ export default async function LoginPage() {
     </main>
   );
 }
+
 

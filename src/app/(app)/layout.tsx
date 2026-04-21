@@ -1,4 +1,5 @@
-﻿import { redirect } from "next/navigation";
+﻿import Image from "next/image";
+import { redirect } from "next/navigation";
 
 import { logout } from "@/app/actions/auth";
 import { MobileNav, SidebarNav } from "@/components/layout/sidebar-nav";
@@ -98,8 +99,14 @@ export default async function AppLayout({
           <div className="sidebar-shell">
             <div className="relative border-b border-white/8 px-4 py-4 xl:px-5">
               <div className="sidebar-brand-row">
-                <div className="sidebar-logo-mark">
-                  <span>La</span>
+                <div className="official-coso-logo official-coso-logo-sidebar">
+                  <Image
+                    src="/brand/coso-logo-official-tight.png"
+                    alt="Logo officiel COSO"
+                    width={64}
+                    height={64}
+                    priority
+                  />
                 </div>
                 <div className="min-w-0">
                   <p className="text-[0.66rem] font-semibold uppercase tracking-[0.22em] text-brand-soft">
@@ -212,8 +219,14 @@ export default async function AppLayout({
             <div className="content-wrap px-4 py-4 sm:px-8 lg:py-5">
               <div className="mobile-brand-card mb-4 flex items-center justify-between gap-4 rounded-[24px] px-4 py-3 lg:hidden">
                 <div className="flex min-w-0 items-center gap-3">
-                  <div className="sidebar-logo-mark mobile-logo-mark">
-                    <span>La</span>
+                  <div className="official-coso-logo official-coso-logo-mobile">
+                    <Image
+                      src="/brand/coso-logo-official-tight.png"
+                      alt="Logo officiel COSO"
+                      width={56}
+                      height={56}
+                      priority
+                    />
                   </div>
                   <div className="min-w-0">
                     <p className="text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-brand-strong">
@@ -283,3 +296,5 @@ export default async function AppLayout({
     </div>
   );
 }
+
+
