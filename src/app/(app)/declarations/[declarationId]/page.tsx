@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
+import { LocalDeclarationDetail } from "@/components/declarations/local-declaration-detail";
 import {
   getDeclarationById,
   type DeclarationRiskLevel,
@@ -60,7 +60,7 @@ export default async function DeclarationDetailPage({
   const declaration = getDeclarationById(declarationId);
 
   if (!declaration) {
-    notFound();
+    return <LocalDeclarationDetail declarationId={declarationId} />;
   }
 
   const linkedDocuments = getDocumentsByDeclarationId(declarationId);

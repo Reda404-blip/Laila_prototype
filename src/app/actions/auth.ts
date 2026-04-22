@@ -49,12 +49,23 @@ export async function login(
     };
   }
 
-  await createSession({
-    userId: matchedUser.id,
-    fullName: matchedUser.fullName,
-    firmName: matchedUser.firmName,
-    role: matchedUser.role,
-  });
+  try {
+    await createSession({
+      userId: matchedUser.id,
+      fullName: matchedUser.fullName,
+      firmName: matchedUser.firmName,
+      role: matchedUser.role,
+    });
+  } catch (error) {
+    console.error("Failed to create demo session.", error);
+
+    return {
+      message:
+        process.env.NODE_ENV === "production"
+          ? "Configuration serveur incomplete : ajoutez SESSION_SECRET dans Vercel puis redeployez."
+          : "La session na pas pu etre creee. Verifiez la configuration du serveur.",
+    };
+  }
 
   redirect("/dashboard");
 }
